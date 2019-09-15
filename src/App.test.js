@@ -37,34 +37,3 @@ test('renders without error', () => {
   const appComponent = findByTestAttr(wrapper, 'component-app');
   expect(appComponent.length).toBe(1);
 });
-
-test('renders increment button', () => {
-  const wrapper = setup();
-  const button = findByTestAttr(wrapper, 'increment-button');
-  expect(button.length).toBe(1);
-});
-
-test('renders counter display', () => {
-  const wrapper =  setup();
-  const counterDisplay = findByTestAttr(wrapper, 'counter-display');
-  expect(counterDisplay.length).toBe(1);
-});
-
-test('counter starts at 0', () => {
-  const wrapper =  setup();
-  const initialCounterState = wrapper.state('counter');
-  expect(initialCounterState).toBe(0);
-});
-
-test('clicking button increments counter display', () => {
-  const counter = 7;
-  const wrapper = setup(null, { counter });
-
-  // Find button and click
-  const button = findByTestAttr(wrapper, 'increment-button');
-  button.simulate('click');
-
-  // Find display and test value
-  const counterDisplay = findByTestAttr(wrapper, 'counter-display');
-  expect(counterDisplay.text()).toContain(counter + 1);
-});
